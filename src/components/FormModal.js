@@ -145,7 +145,8 @@ class FormModal extends Component {
     })
 
     if(isAllvalid){
-      if(this.props.orders.find(o => o.name === this.state.form.name)){
+      let existIdx = this.props.orders.findIndex(o => o.name === this.state.form.name)
+      if(existIdx!==-1 && existIdx !== this.props.action.index){
         isAllvalid = false
         errors.name = '名稱不可重複'
         errorList.push('名稱不可重複')
